@@ -1,0 +1,102 @@
+// Graphical variables
+@import "config/fonts";
+@import "config/colors";
+@import "config/bootstrap_variables";
+
+// External libraries
+@import "bootstrap";
+@import "font-awesome";
+@import url('https://fonts.googleapis.com/css2?family=Macondo+Swash+Caps&family=MedievalSharp&family=Metamorphous&family=Modern+Antiqua&display=swap');
+
+// Mapbox
+@import url("https://api.mapbox.com/mapbox-gl-js/v3.1.2/mapbox-gl.css");
+@import url("https://api.mapbox.com/mapbox-gl-js/plugins/mapbox-gl-geocoder/v5.0.0/mapbox-gl-geocoder.css");
+
+// Your CSS partials
+@import "components/index";
+@import "pages/index";
+@import "components/cards";
+@import "components/footer";
+
+h1 {
+  font-size: 60px;
+  color: darkslateblue;
+}
+
+h2 {
+  color: darkslateblue;
+}
+
+h5 {
+  font-size: 24px;
+  color:darkslateblue;
+}
+
+body {
+  padding-top: 56px;
+}
+
+.flex-align {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.margin-top-negative {
+  margin-top: -50px;
+}
+
+.no-mb {
+  margin-bottom: 0;
+}
+
+.no-bold {
+  font-weight: normal;
+}
+
+.offer-show-address {
+  font-weight: 200;
+  color: #333;
+}
+
+.little-class {
+  font-size: 9px;
+}
+
+.price {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.text-orange {
+  color: $orange;
+}
+
+.text-green {
+  color: $green;
+}
+
+.text-red {
+  color: $red;
+}
+
+#logo {
+  font-family: "MedievalSharp", Times, serif;
+  font-weight: bold;
+  color: darkslateblue;
+}
+
+.text-blue {
+  color: $blue;
+}
+
+.fade-out {
+  opacity: 0;
+  transform: translateY(50px);
+  transition: opacity 1s ease-out, transform 1s ease-out;
+}
+
+.fade-in {
+  opacity: 1;
+  transform: translateY(0);
+}

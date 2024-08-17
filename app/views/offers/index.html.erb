@@ -1,0 +1,42 @@
+<div class= "container mt-4" data-controller="sound">
+  <h1 class="mb-4">Louez l’impossible, vivez l’extraordinaire.</h1>
+  <div class="d-flex flex-wrap" data-controller="scroll-animation">
+    <% if @offers.present? %>
+      <% @offers.each do |offer| %>
+        <div class="card m-3" style="width: 18rem; border-radius: 15px" data-scroll-animation-target="card">
+          <%= link_to offer_path(offer) do %>
+            <img src="<%= if offer.image.attached?
+                          cl_image_path(offer.image.key)
+                        elsif offer.url_image.nil?
+                          'https://images.pexels.com/photos/691668/pexels-photo-691668.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1'
+                        else
+                          offer.url_image.strip
+                        end %>" class="card-img-top" alt="<%= offer.name %>" style="height: 200px;">
+            <% end %>
+          <div class="card-body">
+            <h5 class="card-title"><strong><%= offer.name %></strong></h5>
+            <p class="card-text mb-2"><%= offer.description.truncate(100) %></p>
+            <%= link_to 'Voir cette offre', offer_path(offer), class: 'btn btn-outline-info index-button-blue-green w-100 mt-auto', data: { action: 'click->sound#playsoundLetsgo' } %>
+            <div class="d-flex justify-content-between mt-3">
+              <p class="card-text"><i class="fa-solid fa-house-user icon-blue-green"></i> <%= offer.user.username%></p>
+              <p class="card-text text-end"><i class="fa-solid fa-coins icon-yellow"></i> <%= offer.price.to_s.reverse.gsub(/(\d{3})(?=\d)/, '\\1,').reverse%></p>
+            </div>
+          </div>
+        </div>
+      <% end %>
+    <% else %>
+      <p>No offers available.</p>
+    <% end %>
+  </div>
+  <hr>
+  <h2> Explore with our map.</h2>
+  <br>
+  <div style="width: 100%; height: 600px;"
+    data-controller="map"
+    data-map-markers-value="<%= @markers.to_json %>"
+    data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>">
+  </div>
+
+  <%# AUDIO NE PAS REACTIVER TOUT DE SUITE %>
+  <%# <audio type="audio/mp3" src="home-audio.mp3" autoplay loop> %>
+</div>
